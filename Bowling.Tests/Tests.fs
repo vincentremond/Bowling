@@ -5,16 +5,16 @@ open Bowling
 
 let (|CharAsInt|_|) c =
     match c with
-    | '-' -> Some 0
-    | '1' -> Some 1
-    | '2' -> Some 2
-    | '3' -> Some 3
-    | '4' -> Some 4
-    | '5' -> Some 5
-    | '6' -> Some 6
-    | '7' -> Some 7
-    | '8' -> Some 8
-    | '9' -> Some 9
+    | '-' -> Some 0<fallenPins>
+    | '1' -> Some 1<fallenPins>
+    | '2' -> Some 2<fallenPins>
+    | '3' -> Some 3<fallenPins>
+    | '4' -> Some 4<fallenPins>
+    | '5' -> Some 5<fallenPins>
+    | '6' -> Some 6<fallenPins>
+    | '7' -> Some 7<fallenPins>
+    | '8' -> Some 8<fallenPins>
+    | '9' -> Some 9<fallenPins>
     | _ -> None
 
 let parseTextSheet (str: string) : ScoreSheet =
@@ -32,18 +32,19 @@ let parseTextSheet (str: string) : ScoreSheet =
     
 
 [<Test>]
-let Test1 () =
+let ``Test multiple sheets`` () =
     
     let scoreSheets = [
-        "|9-|9-|9-|9-|9-|9-|9-|9-|9-|9-|", 90
-        "|5/|5/|5/|5/|5/|5/|5/|5/|5/|5/|5 |", 150
         "|X |X |X |X |X |X |X |X |X |X |X |X |", 300
+        "|X |X |X |X |X |X |X |X |X |X |X |9 |", 299
+        "|5/|5/|5/|5/|5/|5/|5/|5/|5/|5/|5 |", 150
+        "|9-|9-|9-|9-|9-|9-|9-|9-|9-|9-|", 90
     ]
     
     for scoreSheet, expected in scoreSheets do
         
         let scores = parseTextSheet scoreSheet
-        let result = ScoreCalculator.calculateScore scores
+        let result = ScoreCalculator.calculateTotalScore scores
         
         Assert.That(result, Is.EqualTo(expected))
     

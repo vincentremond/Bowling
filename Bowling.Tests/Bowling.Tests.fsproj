@@ -10,7 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="paket.references" />
-    <Compile Include="UnitTest1.fs" />
+    <Compile Include="Helpers.fs" />
+    <Compile Include="Tests.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bowling\Bowling.fsproj" />
