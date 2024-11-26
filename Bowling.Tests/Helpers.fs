@@ -2,8 +2,6 @@
 
 [<RequireQualifiedAccess>]
 module List =
-    let sumByI f =
-        List.mapi f >> List.fold (+) LanguagePrimitives.GenericZero
 
     let windowedStep size step list =
         let rec loop acc =
