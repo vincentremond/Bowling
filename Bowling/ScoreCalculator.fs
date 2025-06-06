@@ -53,9 +53,12 @@ module ScoreCalculator =
 
     let private updateScoreState currentScoreState roll =
         match roll, currentScoreState with
-        | RollResult.Strike, ScoreState.NextAndFollowing(_, bonus2) -> ScoreState.NextAndFollowing((RollResult.Strike :: bonus2), [ RollResult.Strike ])
-        | RollResult.Strike, ScoreState.Next _ -> ScoreState.NextAndFollowing([ RollResult.Strike ], [ RollResult.Strike ])
-        | RollResult.Strike, ScoreState.None -> ScoreState.NextAndFollowing([ RollResult.Strike ], [ RollResult.Strike ])
+        | RollResult.Strike, ScoreState.NextAndFollowing(_, bonus2) ->
+            ScoreState.NextAndFollowing((RollResult.Strike :: bonus2), [ RollResult.Strike ])
+        | RollResult.Strike, ScoreState.Next _ ->
+            ScoreState.NextAndFollowing([ RollResult.Strike ], [ RollResult.Strike ])
+        | RollResult.Strike, ScoreState.None ->
+            ScoreState.NextAndFollowing([ RollResult.Strike ], [ RollResult.Strike ])
         | RollResult.Spare, ScoreState.NextAndFollowing(_, bonus2) -> ScoreState.Next(RollResult.Spare :: bonus2)
         | RollResult.Spare, ScoreState.Next _ -> ScoreState.Next([ RollResult.Spare ])
         | RollResult.Spare, ScoreState.None -> ScoreState.Next([ RollResult.Spare ])
@@ -142,7 +145,6 @@ module ScoreCalculator =
                 | Extra(extra) -> [ extra ]
             )
 
-        let finalState =
-            rolls |> List.fold roll initialState
+        let finalState = rolls |> List.fold roll initialState
 
         finalState.Score
