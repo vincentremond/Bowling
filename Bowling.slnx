@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/.build/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="paket.dependencies" />
+    <File Path="paket.lock" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Bowling.Tests/Bowling.Tests.fsproj" />
+  <Project Path="Bowling/Bowling.fsproj" />
+</Solution>
